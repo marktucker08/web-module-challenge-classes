@@ -101,12 +101,15 @@ class Car {
     this.tank = this.tank + gallons;
   }
   drive(distance) {
+    const drivableMiles = this.tank * this.milesPerGallon;
     const galUsed = (distance / this.milesPerGallon);
-    if (this.tank - galUsed <= 0) {
-      return `I ran out of fuel at ${this.odometer} miles!`
-    } else {
+    if (distance <= drivableMiles) {
       this.odometer = distance + this.odometer;
-      return this.tank = this.tank - galUsed;
+      this.tank = this.tank - galUsed;
+    } else {
+      this.odometer = this.odometer + drivableMiles;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
     }
   }
 }
@@ -175,7 +178,7 @@ class Instructor extends Lambdasian {
     return `Today we are learning about ${subject}.`;
   }
   grade(student, subject) {
-    return `${student} receives a perfect score on ${subject}`;
+    return `${student.name} receives a perfect score on ${subject}`;
   }
 }
 
@@ -260,7 +263,7 @@ class ProjectManager extends Instructor {
     return `${this.name} announces to ${channel}, @channel standy times!`
    }
    debugsCode(student, subject) {
-    return `${this.name} debugs ${student}'s code on ${subject}.`
+    return `${this.name} debugs ${student.name}'s code on ${subject}.`
    }
 }
 
