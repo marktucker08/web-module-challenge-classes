@@ -207,9 +207,34 @@ console.log(myTeach.grade('Mark Tucker', 'Redux'));
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
 
-class Student {
-   
+class Student extends Lambdasian {
+   constructor(keys) {
+    super(keys);
+    this.previousBackground = keys.previousBackground;
+    this.className = keys.className;
+    this.favSubjects = keys.favSubjects;
+   }
+   listSubjects() {
+    return(`${this.favSubjects}`)
+   }
+   PRAssignment(subject) {
+    return `${this.name} has submitted a PR for ${subject}.`
+   }
+   sprintChallenge(subject) {
+    return `${this.name} has begun sprint challenge on ${subject}.`
+   }
 }
+
+const meStudent = new Student({
+  name: 'Mark',
+  age: 40,
+  location: 'grand junction',
+  previousBackground: 'visual basic',
+  className: 'CS133',
+  favSubjects: ['CSS', 'JavaScript', 'Intro to React']
+});
+
+console.log(meStudent.listSubjects());
 
 /*
   TASK 6
