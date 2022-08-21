@@ -250,9 +250,33 @@ console.log(meStudent.listSubjects());
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
 
-class ProjectManager {
-   
+class ProjectManager extends Instructor {
+   constructor(keys) {
+    super(keys);
+    this.gradClassName = keys.gradClassName;
+    this.favInstructor = keys.favInstructor;
+   }
+   standUp(channel) {
+    return `${this.name} announces to ${channel}, @channel standy times!`
+   }
+   debugsCode(student, subject) {
+    return `${this.name} debugs ${student}'s code on ${subject}.`
+   }
 }
+
+const myProjMgr = new ProjectManager({
+  name: 'Murray',
+  age: 38,
+  location: 'LA',
+  specialty: 'react',
+  favLanguage: 'Python',
+  gradClassName: 'CS1',
+  favInstructor: 'Joey'
+});
+
+console.log(myProjMgr.standUp('New Learners'));
+console.log(myProjMgr.grade('Mark Tucker', 'CSS'));
+console.log(myProjMgr.debugsCode("Clint Fix", "HTML"));
 
 /*
   STRETCH PROBLEM (no tests!)
