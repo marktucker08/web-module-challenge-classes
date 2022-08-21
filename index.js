@@ -131,8 +131,23 @@ console.log(myCorvette.tank);
 */
 
 class Lambdasian {
-  
+  constructor(keys) {
+    this.name = keys.name;
+    this.age = keys.age;
+    this.location = keys.location;
+  }
+  speak() {
+    return `Hello my name is ${this.name}, I am from ${this.location}.`;
+  }
 }
+
+const test = new Lambdasian({
+  name: "Joe",
+  age: 41,
+  location: "Alabama"
+});
+
+console.log(test.speak());
 
 /*
   TASK 4
