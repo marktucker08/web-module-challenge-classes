@@ -44,8 +44,37 @@ class Airplane {
 */
 
 class Person {
-  
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+    this.stomach = [];
+  }
+  eat(someFood) {
+    if (this.stomach.length < 10) {
+      this.stomach.push(someFood);
+  } else {
+    return 'Stomach is full!';
+  }
+  }
+  poop() {
+    this.stomach = [];
+  }
+  toString() {
+    return `${this.name}, ${this.age}`;
+  }
 }
+
+const me = new Person("Mark", 40);
+me.eat("Tacos");
+me.eat("Beans");
+me.eat("chips");
+me.eat("salsa");
+me.eat("guac");
+console.log(me.stomach);
+console.log(me.toString());
+me.poop();
+console.log(me.stomach);
+
 
 /*
   TASK 2
@@ -62,8 +91,31 @@ class Person {
 */
 
 class Car {
-  
+  constructor(model, milesPerGallon) {
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
+  fill(gallons) {
+    this.tank = this.tank + gallons;
+  }
+  drive(distance) {
+    const galUsed = (distance / this.milesPerGallon);
+    if (this.tank - galUsed <= 0) {
+      return `I ran out of fuel at ${this.odometer} miles!`
+    } else {
+      this.odometer = distance + this.odometer;
+      return this.tank = this.tank - galUsed;
+    }
+  }
 }
+
+const myCorvette = new Car("corvette", 20);
+console.log(myCorvette);
+myCorvette.fill(22);
+myCorvette.drive(50); 
+console.log(myCorvette.tank);
 
 /*
   TASK 3
